@@ -8,7 +8,7 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: npm install
-        run: docker-compose exec -T web npm install
+        run: docker-compose exec web npm install
       - uses: satak/webrequest-action@master
         with:
           url: http://142.28.1.1:5001/
