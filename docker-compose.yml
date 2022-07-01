@@ -7,30 +7,14 @@ services:
       args:
         PORT: 5001
     volumes:
-      - .:/usr/src/app
+      - .:/usr/src/app/
     ports:
-      - 5001:5001
-    # depends_on:
-    #   - pg
+      - 5002:5001
     environment:
-      DATABASE_URL: postgres://postgres:ucreate@142.28.1.2:8432/reviewee-api
       DEBUG: 'true'
     networks:
       testing_net:
         ipv4_address: 142.28.1.1
-
-  pg:
-    image: postgres:latest
-    ports:
-    - 8332:5432
-    volumes:
-      - db_data:/usr/lib/postgres
-    environment:
-      POSTGRES_PASSWORD: ucreate
-      POSTGRES_DB: reviewee-api
-    networks:
-      testing_net:
-        ipv4_address: 142.28.1.2
 
 volumes:
   db_data: {}
