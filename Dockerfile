@@ -1,9 +1,15 @@
 FROM node:latest
 
-WORKDIR /app/
+ENV PORT=${PORT}
 
-COPY package.json .
+WORKDIR /usr/src/app
 
-RUN npm install
+COPY package*.json ./
+
+RUN npm install --production --silent && mv node_modules ../
 
 COPY . .
+
+EXPOSE 5001
+
+CMD [ "node", "src/index.js" ]

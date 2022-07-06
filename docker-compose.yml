@@ -6,9 +6,8 @@ services:
       dockerfile: Dockerfile
       args:
         PORT: 5001
-    command: npm start
     volumes:
-      - .:/app/
+      - .:/usr/src/app
     ports:
       - 5002:5001
     environment:
